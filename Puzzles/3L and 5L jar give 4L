@@ -1,3 +1,61 @@
 2. Two Jars of Water Puzzle
 
 You have a 5-liter jar and a 3-liter jar. You need exactly 4 liters of water.
+Answer ==> 
+
+# Two jars (5 L & 3 L) — how to get exactly 4 L
+
+Classic puzzle: you have a 5-liter jar and a 3-liter jar (no marks in between). You may **fill**, **empty**, or **pour from one jar to the other until either the source is empty or the destination is full**. Goal: measure **exactly 4 liters**.
+
+There are two simple, equivalent solutions. I’ll show both with clear steps.
+
+---
+
+## Solution A (most common)
+
+1. **Fill the 5 L jar.**
+   State: 5L jar = **5**, 3L jar = **0**.
+2. **Pour from 5L into 3L until the 3L is full.**
+   Now: 5L = **2** (because 5 − 3), 3L = **3**.
+3. **Empty the 3L jar.**
+   Now: 5L = **2**, 3L = **0**.
+4. **Pour the 2 L from the 5L jar into the 3L jar.**
+   Now: 5L = **0**, 3L = **2**.
+5. **Fill the 5L jar again.**
+   Now: 5L = **5**, 3L = **2**.
+6. **Pour from the 5L into the 3L until the 3L is full.** The 3L needs 1 L to fill, so you pour 1 L from the 5L.
+   Result: 5L = **4**, 3L = **3** — **you have 4 liters in the 5 L jar**. ✅
+
+---
+
+## Solution B (alternative)
+
+1. **Fill the 3L jar.**
+   State: 5L = 0, 3L = **3**.
+2. **Pour 3L into the 5L jar.**
+   5L = **3**, 3L = 0.
+3. **Fill the 3L jar again.**
+   5L = **3**, 3L = **3**.
+4. **Pour from 3L into 5L until 5L is full.** You pour 2 L (5L needed 2), so left in 3L = **1**.
+   Now: 5L = **5**, 3L = **1**.
+5. **Empty the 5L jar.**
+   Now: 5L = **0**, 3L = **1**.
+6. **Pour the 1 L from 3L into the 5L jar.**
+   Now: 5L = **1**, 3L = **0**.
+7. **Fill the 3L jar and pour it into the 5L jar.** That adds 3 L to the 1 L already in 5L → **4 L** in the 5L jar. ✅
+
+Both reach the same final state; the move sequences differ slightly.
+
+---
+
+## Why it’s possible (quick math)
+
+This puzzle is solvable because `gcd(5,3) = 1`. With two jars of sizes `a` and `b`, you can measure any integer volume that is a multiple of `gcd(a,b)` and ≤ max(a,b). Since gcd(5,3)=1, every integer up to 5 is achievable — including 4.
+
+---
+
+## General method (algorithmic view)
+
+* Repeatedly do: *fill a jar*, *empty a jar*, or *pour one jar into the other*.
+* A systematic way: simulate pouring from one jar to the other until you reach desired volume; you can start either by filling the larger jar (Solution A) or smaller jar (Solution B). One of these two directions will reach the goal in ≤ `a + b` steps.
+
