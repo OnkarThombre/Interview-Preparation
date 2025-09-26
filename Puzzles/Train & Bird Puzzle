@@ -1,0 +1,66 @@
+Train & Bird Puzzle
+
+A train travels from City A to City B (100 km) at 50 km/h.
+A bird starts flying from City B towards the train at 100 km/h.
+
+The bird flies back and forth until the train reaches City B.
+
+How far did the bird travel?
+
+Hint: Time = Distance / Speed → Solve easily. explain me this puzzle forth until the train rand this sentence
+
+
+answer => 
+### Problem recap (short)
+
+* Train goes from **A → B**, distance = **100 km**, speed = **50 km/h**.
+* Bird starts at **B** and flies **toward the train** at **100 km/h**.
+* The bird flies back and forth between the train and B (or between the train and the other end) **until the train reaches City B**.
+* Question: **How far does the bird travel in total?**
+
+---
+
+### Key observation (the trick)
+
+You don’t need to add up the bird’s infinitely many back-and-forth legs. Instead, find **how long the train takes to travel** from A to B, then multiply that time by the bird’s speed.
+
+Why this works: the bird is always flying from the start time until the train arrives — so its total distance = (bird speed) × (time until train arrives).
+
+---
+
+### Step-by-step
+
+1. **Time for the train to reach B**
+
+   $$
+   \text{time} = \frac{\text{distance}}{\text{speed}} = \frac{100\ \text{km}}{50\ \text{km/h}} = 2\ \text{hours}.
+   $$
+
+2. **Bird’s total distance**
+   Bird flies at 100 km/h for the same 2 hours (we assume it turns instantly with no delay), so
+
+   $$
+   \text{distance}_\text{bird} = 100\ \text{km/h} \times 2\ \text{h} = 200\ \text{km}.
+   $$
+
+---
+
+### Intuition about the “back-and-forth”
+
+* It looks like an infinite sequence of legs (bird meets train, turns, meets B, turns, etc.), but those leg distances get shorter and shorter. Summing that infinite series gives the same result (200 km).
+* The simple time × speed method avoids messy series — that’s the classic trick examiners expect.
+
+---
+
+### Assumptions (important to mention in exams/interviews)
+
+* The bird **starts at the same time** as the train leaves.
+* The bird **instantly reverses direction** when it meets the train or reaches B (no turning time).
+* The bird flies continuously until the train arrives at B.
+
+---
+
+### Final answer
+
+**The bird travels 200 km in total.**
+
